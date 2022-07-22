@@ -1,6 +1,8 @@
 
 package com.pasan.linkedlist;
 
+import java.util.Stack;
+
 /**
  *
  * @author pasan
@@ -44,6 +46,8 @@ public class LinkedList {
             node=node.next;
         }
     }
+    
+    
 
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
