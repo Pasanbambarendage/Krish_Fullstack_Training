@@ -7,6 +7,6 @@ public interface FuelReservedService {
 
     public FuelReserved saveReserved(FuelReserved fuel_reserved);
 
-    public FuelReserved getFuelReserved(int OrderId, String fueltype, int fuelcapacity);
+    public FuelReserved getFuelReserved(int OrderId, String fueltype, int fuelcapacity, int shedId);
 
 }

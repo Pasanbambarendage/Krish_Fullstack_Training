@@ -18,11 +18,12 @@ public class FuelReservedServiceImpl implements FuelReservedService {
     }
 
     @Override
-    public FuelReserved getFuelReserved(int OrderId, String fueltype, int fuelcapacity) {
+    public FuelReserved getFuelReserved(int OrderId, String fueltype, int fuelcapacity, int shedId) {
         FuelReserved reserved = new FuelReserved();
         reserved.setOrderId(OrderId);
         reserved.setFuelType(fueltype);
         reserved.setFuelQuentity(fuelcapacity);
+        reserved.setShedId(shedId);
         return saveReserved(reserved);
 
     }

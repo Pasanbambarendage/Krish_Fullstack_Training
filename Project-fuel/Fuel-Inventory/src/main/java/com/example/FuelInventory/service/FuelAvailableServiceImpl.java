@@ -52,7 +52,7 @@ public class FuelAvailableServiceImpl implements FuelAvailableService {
     }
 
     @Override
-    public FuelAvailable getQuantity(int orderId, String fuelType, int fuelCapacity) {
+    public FuelAvailable getQuantity(int orderId, String fuelType, int fuelCapacity, int shedId) {
 
         FuelAvailable byFuelType = fuelavailablerepo.findByFuelType(fuelType);
         int ID = byFuelType.getFuelID();
@@ -62,7 +62,7 @@ public class FuelAvailableServiceImpl implements FuelAvailableService {
         byFuelType.setFuelQuantity(Fuel_Balance);
         UpdateStock(ID,byFuelType);
         //AvailableStock(byFuelType);
-        fuelReservedService.getFuelReserved(orderId,fuelType,fuelCapacity);
+        fuelReservedService.getFuelReserved(orderId,fuelType,fuelCapacity,shedId);
 
         return byFuelType;
 

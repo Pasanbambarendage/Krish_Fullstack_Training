@@ -11,14 +11,17 @@ public class FuelReserved {
     private String fuelType;
     private int fuelQuentity;
 
+    private int shedId;
+
 
     public FuelReserved(){
 
     }
-    public FuelReserved(int orderId, String fuelType, int fuelQuentity) {
+    public FuelReserved(int orderId, String fuelType, int fuelQuentity, int shedId) {
         this.orderId = orderId;
         this.fuelType = fuelType;
         this.fuelQuentity = fuelQuentity;
+        this.shedId=shedId;
     }
 
     public int getOrderId() {
@@ -43,5 +46,13 @@ public class FuelReserved {
 
     public void setFuelQuentity(int fuelQuentity) {
         this.fuelQuentity = fuelQuentity;
+    }
+
+    public int getShedId() {
+        return shedId;
+    }
+
+    public void setShedId(int shedId) {
+        this.shedId = shedId;
     }
 }

@@ -27,6 +27,7 @@ public class Kafklistener {
         String fuelType ="";
         String fuelStatus ="";
         int fuelCapacity =0;
+        int shedId = 0;
 
         ObjectMapper objectMapper = new ObjectMapper();
         try{
@@ -36,11 +37,12 @@ public class Kafklistener {
                 fuelType =fuel_order.getFuelType();
                 fuelCapacity = fuel_order.getCapacity();
                 fuelStatus = fuel_order.getStatus();
+                shedId = fuel_order.getShedId();
             }
 
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        System.out.println(fuelavailableservice.getQuantity(orderId,fuelType,fuelCapacity));
+        System.out.println(fuelavailableservice.getQuantity(orderId,fuelType,fuelCapacity,shedId));
     }
 }

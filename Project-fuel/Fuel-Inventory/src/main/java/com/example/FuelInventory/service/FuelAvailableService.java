@@ -8,5 +8,5 @@ public interface FuelAvailableService {
 
     public ResponseEntity<FuelAvailable> UpdateStock(int id, FuelAvailable fuel_available);
 
-    public FuelAvailable getQuantity(int orderId, String fueltype, int fuelcapacity);
+    public FuelAvailable getQuantity(int orderId, String fueltype, int fuelcapacity, int shedId);
 }
