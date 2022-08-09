@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface FuelAvailableRepo extends MongoRepository<FuelAvailable,Integer> {
 
     FuelAvailable findByFuelType(String fuelType);
+
 }

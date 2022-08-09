@@ -1,14 +1,8 @@
-package com.example.FuelApplication.model;
-
+package com.example.FuelInventory.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
-
-@Document(collection = "FuelOrder")
 public class FuelOrder {
-
     @Id
     private int orderID;
     private String shedName;
@@ -97,5 +91,19 @@ public class FuelOrder {
 
     public void setScheduleDate(String scheduleDate) {
         this.scheduleDate = scheduleDate;
+    }
+
+    @Override
+    public String toString() {
+        return "FuelOrder{" +
+                "orderID=" + orderID +
+                ", shedName='" + shedName + '\'' +
+                ", shedId=" + shedId +
+                ", shedLocation='" + shedLocation + '\'' +
+                ", capacity=" + capacity +
+                ", fuelType='" + fuelType + '\'' +
+                ", status='" + status + '\'' +
+                ", scheduleDate='" + scheduleDate + '\'' +
+                '}';
     }
 }

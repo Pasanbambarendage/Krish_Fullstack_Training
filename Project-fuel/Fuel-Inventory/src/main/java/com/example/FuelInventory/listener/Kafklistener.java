@@ -1,10 +1,9 @@
 package com.example.FuelInventory.listener;
 
-import com.example.FuelApplication.model.FuelOrder;
+import com.example.FuelInventory.model.FuelOrder;
 import com.example.FuelInventory.service.FuelAvailableService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -24,25 +23,27 @@ public class Kafklistener {
 
         String value = String.valueOf(list);
         int orderId =0;
-        String fuelType ="";
-        String fuelStatus ="";
-        int fuelCapacity =0;
+        String fuelType = "";
+        String fuelStatus = "";
+        int fuelCapacity = 0;
         int shedId = 0;
 
         ObjectMapper objectMapper = new ObjectMapper();
         try{
             List<FuelOrder> orders = objectMapper.readValue(value, new TypeReference<List<FuelOrder>>() {});
-            for(FuelOrder fuel_order: orders){
-                orderId= fuel_order.getOrderID();
-                fuelType =fuel_order.getFuelType();
-                fuelCapacity = fuel_order.getCapacity();
-                fuelStatus = fuel_order.getStatus();
-                shedId = fuel_order.getShedId();
+            for(FuelOrder fuelOrder: orders){
+                orderId= fuelOrder.getOrderID();
+                fuelType =fuelOrder.getFuelType();
+                fuelCapacity = fuelOrder.getCapacity();
+                fuelStatus = fuelOrder.getStatus();
+                shedId = fuelOrder.getShedId();
+
+                //System.out.println(fuelOrder.toString());
             }
 
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        System.out.println(fuelavailableservice.getQuantity(orderId,fuelType,fuelCapacity,shedId));
+        fuelavailableservice.getQuantity(orderId,fuelType,fuelCapacity,shedId);
     }
 }

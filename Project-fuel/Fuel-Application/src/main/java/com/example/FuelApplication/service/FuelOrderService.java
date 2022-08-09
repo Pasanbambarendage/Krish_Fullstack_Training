@@ -18,4 +18,6 @@ public interface FuelOrderService {
     ResponseEntity<List<FuelOrder>> getOrder(int shedId);
 
     ResponseEntity<FuelOrder> orderReceived(int shedId, String status);
+
+    public ResponseEntity<FuelOrder>orderSchedule(int orderId, String fuleStatus, String scheduleDate);
 }

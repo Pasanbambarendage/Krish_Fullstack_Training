@@ -2,6 +2,7 @@ package com.example.FuelApplication.service;
 
 import com.example.FuelApplication.config.KafkaTopicConfig;
 import com.example.FuelApplication.model.FuelOrder;
+import com.example.FuelSchedule.model.FuelSchedule;
 import com.example.FuelApplication.repository.FuelOrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,21 @@ public class FuelOrderServiceImple implements FuelOrderService {
         if(orderNo.isPresent()) {
             FuelOrder order = orderNo.get();
             order.setStatus(status);
+
+            fuelOrderRepo.save(order);
+            return ResponseEntity.status(HttpStatus.OK).body(order);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Override
+    public ResponseEntity<FuelOrder> orderSchedule(int orderId, String fuleStatus, String scheduleDate) {
+        Optional<FuelOrder> orderNo = fuelOrderRepo.findById(orderId);
+        if(orderNo.isPresent()) {
+            FuelOrder order = orderNo.get();
+            order.setStatus(fuleStatus);
+            order.setScheduleDate(scheduleDate);
 
             fuelOrderRepo.save(order);
             return ResponseEntity.status(HttpStatus.OK).body(order);

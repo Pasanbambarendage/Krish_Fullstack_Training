@@ -16,7 +16,6 @@ public class FuelAvailable {
     }
 
     public FuelAvailable(int fuelID, String fuelType, int fuelQuantity) {
-        super();
         this.fuelID = fuelID;
         this.fuelType = fuelType;
         this.fuelQuantity = fuelQuantity;

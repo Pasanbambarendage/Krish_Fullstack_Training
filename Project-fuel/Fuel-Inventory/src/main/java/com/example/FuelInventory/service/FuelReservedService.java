@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 public interface FuelReservedService {
 
-    public FuelReserved saveReserved(FuelReserved fuel_reserved);
+    public FuelReserved saveReserved(FuelReserved fuelreserved);
 
     public FuelReserved getFuelReserved(int OrderId, String fueltype, int fuelcapacity, int shedId);
 
