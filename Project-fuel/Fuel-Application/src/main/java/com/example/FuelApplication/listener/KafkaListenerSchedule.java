@@ -1,7 +1,6 @@
 package com.example.FuelApplication.listener;
 
 import com.example.FuelApplication.service.FuelOrderService;
-import com.example.FuelInventory.model.FuelReserved;
 import com.example.FuelSchedule.model.FuelSchedule;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

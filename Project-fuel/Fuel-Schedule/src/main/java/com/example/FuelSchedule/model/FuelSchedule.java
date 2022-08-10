@@ -3,18 +3,17 @@ package com.example.FuelSchedule.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection ="FuelSchedule")
+@Document(collection ="Fuel_Schedule")
 public class FuelSchedule {
 
-    @Id
     private int OrderID;
     private String ScheduleDate;
 
-    public FuelSchedule(){
-
+    public FuelSchedule() {
     }
-    
+
     public FuelSchedule(int orderID, String scheduleDate) {
+        super();
         OrderID = orderID;
         ScheduleDate = scheduleDate;
     }
@@ -33,5 +32,13 @@ public class FuelSchedule {
 
     public void setScheduleDate(String scheduleDate) {
         ScheduleDate = scheduleDate;
+    }
+
+    @Override
+    public String toString() {
+        return "FuelSchedule{" +
+                "OrderID=" + OrderID +
+                ", ScheduleDate='" + ScheduleDate + '\'' +
+                '}';
     }
 }

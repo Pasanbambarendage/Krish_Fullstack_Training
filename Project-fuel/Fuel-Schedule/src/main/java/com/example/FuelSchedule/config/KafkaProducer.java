@@ -10,6 +10,7 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import org.springframework.kafka.core.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,21 +21,22 @@ public class KafkaProducer {
     @Value("localhost:9092")
     private String boostrapServer;
 
-    public Map<String,Object> configProducer(){
-        Map<String, Object> orderMap = new HashMap<>();
-        orderMap.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, boostrapServer);
-        orderMap.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        orderMap.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        return orderMap;
+    public Map<String,Object> producerConfig(){
+        Map<String, Object> props = new HashMap<>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,boostrapServer);
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        return props;
     }
 
     @Bean
     public ProducerFactory<String, FuelSchedule> producerFactory(){
-        return new DefaultKafkaProducerFactory<>(configProducer());
+        return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, FuelSchedule> kafkaTemplate(ProducerFactory<String, FuelSchedule> producerFactory){
+    public KafkaTemplate<String, FuelSchedule> kafkaTemplate(
+            ProducerFactory<String, FuelSchedule> producerFactory){
         return new KafkaTemplate<>(producerFactory);
     }
 }

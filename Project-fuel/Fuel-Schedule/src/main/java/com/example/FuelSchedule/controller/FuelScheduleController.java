@@ -20,6 +20,7 @@ public class FuelScheduleController {
 
     @GetMapping("/scheduledate")
     public List<FuelSchedule> getAllDeliveryDate(){
+
         return fuelScheduleService.getAllDeliveryDate();
     }
 

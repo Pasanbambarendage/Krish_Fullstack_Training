@@ -1,7 +1,7 @@
 package com.example.FuelApplication.listener;
 
 import com.example.FuelApplication.service.FuelOrderService;
-import com.example.FuelInventory.model.FuelReserved;
+import com.example.FuelSchedule.model.FuelReserved;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +28,8 @@ public class Kafkalistener {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
 
-            List<FuelReserved> fuelReserveds = objectMapper.readValue(value, new TypeReference<List<FuelReserved>>() {});
+            List<FuelReserved> fuelReserveds =
+                    objectMapper.readValue(value, new TypeReference<List<FuelReserved>>() {});
 
             for(FuelReserved reserved : fuelReserveds){
                 orderId = reserved.getOrderId();
