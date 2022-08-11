@@ -1,6 +1,7 @@
 package com.example.FuelSchedule.service;
 
 import com.example.FuelSchedule.config.KafkaTopicConfig;
+import com.example.FuelSchedule.config.KafkaTopicDispatch;
 import com.example.FuelSchedule.model.FuelSchedule;
 import com.example.FuelSchedule.repository.FuelScheduleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class fuelScheduleServiceImple implements FuelScheduleService{
     @Override
     public FuelSchedule saveSchedule(FuelSchedule fuelSchedule) {
         kafkaTemplate.send(KafkaTopicConfig.MESSAGE_TOPIC,fuelSchedule);
+        kafkaTemplate.send(KafkaTopicDispatch.MESSAGE_TOPIC,fuelSchedule);
         return fuelScheduleRepo.save(fuelSchedule);
     }
     @Override
